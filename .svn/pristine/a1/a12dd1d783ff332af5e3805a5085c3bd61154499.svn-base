@@ -1,0 +1,53 @@
+@import "./var.less";
+article, aside, blockquote, body, button, code, dd, details, div, dl, dt, fieldset, figcaption, figure, footer, form, h1, h2, h3, h4, h5, h6, header, hgroup, hr, input, legend, li, menu, nav, ol, p, pre, section, td, textarea, th, ul {
+  margin: 0;
+  padding: 0;
+}
+body, html{
+  overflow-y: auto;
+}
+table{
+  border-collapse: collapse;
+}
+i, li{
+  font-style: normal;
+}
+.no_event{
+  pointer-events: none;
+}
+.disabled, button:disabled, input:disabled{
+  opacity: .4 !important;
+  pointer-events: none !important;
+  cursor: not-allowed !important;
+}
+.ix-success{
+  color: @color-success;
+}
+.ix-info{
+  color: @color-info;
+}
+.ix-warning{
+  color: @color-warning;
+}
+.ix-danger, .ix-error{
+  color: @color-danger;
+}
+.is-reverse{
+  transform: rotate(180deg);
+}
+.is-reverse90{
+  transform: rotate(90deg);
+}
+.flex{
+  display: flex;
+  align-items: center;
+}
+.f1{
+  flex: 1;
+}
+a{
+  cursor: pointer;
+}
+.center{
+  text-align: center;
+}

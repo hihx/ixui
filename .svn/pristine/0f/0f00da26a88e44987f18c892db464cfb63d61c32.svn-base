@@ -1,0 +1,39 @@
+@import "./var.less";
+.ix-scrollpanel{
+  position: relative;
+  overflow: hidden;
+  border-radius: 4px;
+  .ix-scrollpanel__view{
+    overflow: scroll;
+    box-sizing: border-box;
+    transition: scrollTop .3s;
+  }
+  .ix-scrollpanel__bar{
+    position: absolute;
+    .ix-scrollpanel__t{
+      position: relative;
+      display: block;
+      border-radius: 10px;
+      background: @theme-low;
+      &:hover{
+        background: @theme;
+      }
+    }
+  }
+  .ix-scrollpanel__bar.is-bottom{
+    right: 0;
+    bottom: 0;
+    width: inherit;
+    .ix-scrollpanel__t{
+      height: 8px;
+    }
+  }
+  .ix-scrollpanel__bar.is-right{
+    right: 0;
+    top: 0;
+    height: inherit;
+    .ix-scrollpanel__t{
+      width: 8px;
+    }
+  }
+}

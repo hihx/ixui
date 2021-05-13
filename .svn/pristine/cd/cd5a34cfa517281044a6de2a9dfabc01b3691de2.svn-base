@@ -1,0 +1,14 @@
+@import "./var.less";
+@import "./tooltip.less";
+.ix-popover{
+  min-width: 150px;
+  .ix-tooltip;
+  .ix-scrollpanel{
+    word-break: break-all;
+    box-sizing: border-box;
+    z-index: 1;
+    .ix-scrollpanel__view{
+      max-height: 240px;
+    }
+  }
+}

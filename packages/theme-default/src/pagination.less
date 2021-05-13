@@ -1,0 +1,34 @@
+@import "./var.less";
+.ix-pagination{
+  display: flex;
+  align-items: center;
+  font-size: @fontSize;
+  &.hide{
+    display: none;
+  }
+  .ix-pagination_page{
+    padding: 6px;
+    font-weight: bold;
+    margin: 0 6px;
+    &:hover, &.selected{
+      color: @theme;
+    }
+  }
+  >.ix-select{
+    >.ix-input{
+      width: 80px;
+    }
+  }
+  .ix-pagination_jumper{
+    .ix-input{
+      width: 40px;
+      margin: 0 4px;
+      > .ix-input-inner{
+        text-align: center;
+      }
+    }
+  }
+  .ix-pagination_total, .ix-pagination_jumper, >.ix-select{
+    margin: 0 10px;
+  }
+}

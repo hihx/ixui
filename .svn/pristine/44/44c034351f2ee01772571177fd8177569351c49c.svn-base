@@ -1,0 +1,88 @@
+<template>
+  <div class="ix-tree">
+    <TreeItem v-for="(child, i) in dataList" :key="i" :data="child"></TreeItem>
+  </div>
+</template>
+
+<script>
+  import TreeItem from './Tree-item'
+  export default {
+    name: "ix-tree",
+    components: {TreeItem},
+    props: {
+      data: Array,
+      props: {
+        type: Object,
+        default: {
+          children: 'children',
+          label: 'label'
+        }
+      },
+      lazy: Boolean,
+      load: Function,
+      showCheckbox: Boolean
+    },
+    provide () {
+      return {
+        rootTree: this
+      }
+    },
+    data () {
+      return {
+        dataList: null
+      }
+    },
+    watch: {
+      data () {
+        this.loadList()
+      }
+    },
+    computed: {
+      childrenProp () {
+        return this.props.children
+      },
+      labelProp () {
+        return this.props.label
+      },
+      is_load_lazy () {
+        return this.lazy && this.load != null
+      }
+    },
+    mounted() {
+      this.loadList()
+    },
+    methods: {
+      loadList () {
+        if (!this.data || this.data.length == 0) {
+          this.dataList = null
+          if (this.is_load_lazy) this.loadLazy({level: 0, data: {}}, (result) => this.dataList = result)
+          return
+        }
+        this.dataList = this.formatTreeData(this.data, [], 0)
+      },
+      formatTreeData (list, p_array, level) {
+        if (!list) return null
+        level ++
+        list.forEach(child => {
+          if (p_array) p_array.push(this.createTreeNode(child, this.formatTreeData(child[this.childrenProp], [], level + 1), level))
+        })
+        return p_array
+      },
+      createTreeNode (child, clist, level) {
+        const node = Object.assign({tree_item_visible: false, tree_no_null: true, tree_loading: false, level: level, tree_checked: false}, child)
+        node[this.childrenProp] = clist
+        return node
+      },
+      // 加载后台数据
+      loadLazy (node, loaded) {
+        node.data.tree_loading = true
+        this.load(node, (result) => {
+          node.data.tree_loading = false
+          node.data.tree_no_null = result && result.length > 0
+          loaded(this.formatTreeData(result, [], node.level))
+        })
+      }
+    }
+  }
+</script>
+

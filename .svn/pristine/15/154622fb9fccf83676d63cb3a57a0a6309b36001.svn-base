@@ -1,0 +1,45 @@
+@import "./var.less";
+.ix-link{
+  position: relative;
+  color: @fontColor;
+  font-size: @fontSize;
+  cursor: pointer;
+  transition: all .3s;
+  line-height: 1;
+  white-space: nowrap;
+  &:hover:after {
+    content: " ";
+    position: absolute;
+    left: 0;
+    right: 0;
+    height: 0;
+    bottom: 0;
+    border-bottom: 1px solid;
+  }
+  &.ix-primary{
+    color: @theme;
+    &:hover:after {
+      border-color: @theme;
+    }
+  }
+  &.ix-success{
+    &:hover:after {
+      border-color: @color-success;
+    }
+  }
+  &.ix-info{
+    &:hover:after {
+      border-color: @color-info;
+    }
+  }
+  &.ix-warning{
+    &:hover:after {
+      border-color: @color-warning;
+    }
+  }
+  &.ix-danger{
+    &:hover:after {
+      border-color: @color-danger;
+    }
+  }
+}

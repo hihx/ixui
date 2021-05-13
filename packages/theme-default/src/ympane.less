@@ -1,0 +1,32 @@
+@import "./var.less";
+.ix-YMpane{
+  color: @fontColor;
+  .ix-YMpane_bar{
+    padding: 10px 0;
+    border-bottom: @border;
+  }
+  .ix-link{
+    font-size: 16px;
+  }
+  .ix-YMpane_yyyy, .ix-YMpane_MM{
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    >.ix-link{
+      margin: 16px 0;
+      line-height: 30px;
+      width: calc(100% /4);
+      display: inline-block;
+      box-sizing: border-box;
+      &.this{
+        color: @theme;
+        background: @theme-low;
+        border-radius: 2px;
+        border: @border;
+      }
+      &.range{
+        background: @theme-low;
+      }
+    }
+  }
+}

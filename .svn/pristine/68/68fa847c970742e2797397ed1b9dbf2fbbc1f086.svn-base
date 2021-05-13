@@ -1,0 +1,49 @@
+@import "./var.less";
+.ix-datepane{
+  background: #fff;
+  width: 100%;
+  th{
+    padding: 10px;
+    text-align: center;
+  }
+  td{
+    text-align: center;
+    border: @border;
+    &.today{
+      color: @theme;
+    }
+    &.range{
+      >.ix-datepane_day{
+        background: @theme-low;
+      }
+    }
+    &.this{
+      background: @theme-low;
+      color: @theme;
+      font-weight: bold;
+      >.ix-datepane_day{
+        border: 1px solid @theme;
+      }
+    }
+    .ix-datepane_day{
+      height: 40px;
+      line-height: 40px;
+      padding: 8px;
+      cursor: pointer;
+      border-radius: 2px;
+      border-top: 1px solid #fff;
+      border-bottom: 1px solid #fff;
+      &:hover{
+        background: @theme-low;
+      }
+    }
+  }
+  td.gary, td.noclick{
+    .ix-datepane_day{
+      color: #99a9bf;
+    }
+  }
+  td.noclick{
+    pointer-events: none;
+  }
+}

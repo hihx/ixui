@@ -1,0 +1,36 @@
+@import "./var.less";
+.ix-timepicker{
+  position: relative;
+  >.ix-input{
+    width: 100%;
+  }
+  .ix-timepicker_pop{
+    height: 250px;
+    width: 100%;
+    min-width: 100px;
+    .ix-scrollpanel{
+      height: 100%;
+      width: 100%;
+      >div{
+        flex: 1;
+        height: 100%;
+        overflow: hidden;
+      }
+    }
+    .ix-timepicker_scrollV{
+      width: 130%;
+      height: 100%;
+      overflow-y: auto;
+      >a{
+        display: block;padding: 4px;
+        &.selected{
+          background: @theme-low;
+        }
+      }
+    }
+    .ix-timepicker_mm{
+      border-left: 1px solid @theme-low;
+      border-right: 1px solid @theme-low;
+    }
+  }
+}

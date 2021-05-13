@@ -1,0 +1,78 @@
+@import "./var.less";
+.ix-tabs{
+  position: relative;
+  color: @fontColor;
+  font-size: @fontSize;
+  display: flex;
+  width: 100%;
+  &.ix-top{
+    flex-direction: column;
+    .ix-tabs-bar{
+      margin-bottom: 10px;
+    }
+  }
+  &.ix-left{
+    >.ix-tabs-bar{
+      width: auto;
+      margin-right: 10px;
+      &:before, .ix-tabs-bar-selected {
+        left: auto;
+        right: 0;
+        width: 2px;
+        height: 100%;
+      }
+      >a{
+        text-align: right;
+        display: block;
+      }
+    }
+  }
+  .ix-tabs-bar{
+    width: 100%;
+    position: relative;
+    line-height: 40px;
+    &:before, .ix-tabs-bar-selected {
+      content: " ";
+      position: absolute;
+      left: 0;
+      bottom: 0;
+      width: 100%;
+      height: 2px;
+      background-color: #e4e7ed;
+      z-index: 1;
+    }
+    .ix-tabs-bar-selected {
+      width: 100px;
+      background-color: @theme;
+      z-index: 2;
+      transition: all .3s;
+    }
+    >a{
+      cursor: pointer;
+      margin: 0 15px;
+      transition: color .3s;
+      &:nth-child(2){
+        margin-left: 0;
+      }
+      &.selected, &:hover{
+        color: @theme
+      }
+      >.ico-close{
+        color: @fontColor;
+        font-size: 16px;
+        &:hover{
+          color: @theme
+        }
+      }
+    }
+  }
+  .ix-tabs-content{
+    flex: 1;
+    .ix-tabpane{
+      display: none;
+      &.selected{
+        display: block;
+      }
+    }
+  }
+}

@@ -1,0 +1,53 @@
+@import "./var.less";
+.ix-input{
+  .ix-input-base;
+  >.ix-input-prepend, >.ix-input-append{
+    background: #f5f7fa;
+    text-align: center;
+    max-width: 140px;
+    &:empty{display: none}
+    >.ix-button, >.ix-select{
+      border: 0;
+      padding: 0;
+      background: none;
+      width: 100%;
+      min-width: 40px;
+    }
+    >.ix-select{
+      line-height: 0;
+      display: block;
+    }
+    .ix-button:hover{
+      color: @theme;
+    }
+    >.ix-select>.ix-input{
+      border: 0;
+      border-radius: 0;
+      width: 100%;
+    }
+  }
+  >.ix-input-prepend{
+    border-right: 1px solid #dcdfe6;
+  }
+  >.ix-input-append{
+    border-left: 1px solid #dcdfe6;
+  }
+  >i{
+    pointer-events: none;
+    text-align: center;
+    color: #bfbfbf;
+  }
+  >.ix-input-inner{
+    .input-base;
+  }
+  >a{
+    pointer-events: auto;
+  }
+}
+.ix-textarea{
+  height: auto;
+  line-height: inherit;
+  >.ix-input-inner{
+    padding-right: 0;
+  }
+}

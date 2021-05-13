@@ -1,0 +1,43 @@
+@import "./var.less";
+.ix-select{
+  position: relative;
+  display: inline-block;
+  font-size: 0;
+  .ix-select__caret{
+    transition: transform .3s;
+  }
+  .ix-popover{
+    padding-left: 0;
+    padding-top: 0;
+  }
+  .ix-scrollpanel__view{
+    max-height: 240px;
+  }
+}
+.ix-option{
+  position: relative;
+  display: block;
+  padding: 12px;
+  border-bottom: 1px solid #dcdfe6;
+  cursor: pointer;
+  color: @fontColor;
+  &:last-child{
+    border-bottom: 0;
+  }
+  *{
+    pointer-events: none;
+  }
+  &:hover, &.selected{
+    background: @theme-low;
+  }
+  .ix-icon-seleted{
+    position: absolute;
+    right: 4px;
+    top: 12px;
+    color: @theme;
+    display: none;
+  }
+  &.selected .ix-icon-seleted{
+    display: block;
+  }
+}

@@ -1,0 +1,30 @@
+
+@import "icon.less";
+@import "transition.less";
+@import "button.less";
+@import "input.less";
+@import "select.less";
+@import "scrollpanel.less";
+@import "popover.less";
+@import "radio.less";
+@import "checkbox.less";
+@import "dialog.less";
+@import "message.less";
+@import "link.less";
+@import "inputnumber.less";
+@import "tabs.less";
+@import "alert.less";
+@import "menu.less";
+@import "swiper.less";
+@import "datepane.less";
+@import "ympane.less";
+@import "calendar.less";
+@import "datepicker.less";
+@import "timepicker.less";
+@import "table.less";
+@import "tree.less";
+@import "pagination.less";
+@import "progress.less";
+@import "switch.less";
+
+@import "base.less";

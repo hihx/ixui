@@ -1,0 +1,56 @@
+<template>
+    <div>
+      <a ref="tree_item" class="ix-tree-item" @click="clickItem">
+        <i class="ix-icon-tree" :class="{'is-reverse90': data.tree_item_visible, 'ix-icon-loading': data.tree_loading}" v-show="tree_icon_visible"></i>
+        <ix-checkbox v-if="rootTree.showCheckbox" v-model="data.tree_checked" @change.native="checkBox" @click.native.stop="()=>{}"></ix-checkbox>
+        {{data[rootTree.labelProp]}}
+      </a>
+      <ix-collapse-transition>
+        <div ref="tree_group" class="ix-tree-group" v-if="has_children" v-show="data.tree_item_visible">
+          <tree-item v-for="(child, i) in data[rootTree.childrenProp]" :key="i" :data="child"></tree-item>
+        </div>
+      </ix-collapse-transition>
+    </div>
+</template>
+
+<script>
+  import IxCheckbox from "../checkbox";
+  import IxCollapseTransition from '#/collapse-transition'
+  export default {
+    name: "tree-item",
+    inject: ['rootTree'],
+    components: {IxCheckbox, IxCollapseTransition},
+    props: {
+      data: null
+    },
+    computed: {
+      tree_icon_visible () {
+        return this.has_children || (this.rootTree.lazy && this.data.tree_no_null)
+      },
+      has_children () {
+        return this.data[this.rootTree.childrenProp] && this.data[this.rootTree.childrenProp].length > 0
+      }
+    },
+    data () {
+      return {
+      }
+    },
+    mounted() {
+    },
+    beforeDestroy() {
+    },
+    methods: {
+      clickItem () {
+        this.data.tree_item_visible = !this.data.tree_item_visible
+        if (this.data.tree_item_visible && !this.has_children && this.rootTree.is_load_lazy) {
+          this.rootTree.loadLazy({level: this.data.level, data: this.data}, (result) => this.data[this.rootTree.childrenProp] = result)
+        }
+        this.rootTree.$emit('node-click', this.data)
+      },
+      checkBox () {
+        this.rootTree.$emit('check-change', this.data)
+      }
+    }
+  }
+</script>
+
