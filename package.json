@@ -11,7 +11,7 @@
   ],
   "unpkg": "lib/index.js",
   "style": "lib/index.css",
-  "homepage": "https://xh33.gitee.io/ixui",
+  "homepage": "https://hihx.github.io/ixui/",
   "keywords": [
     "ix",
     "ixui",
@@ -32,7 +32,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git@github.com:huangxian008/ix-ui.git"
+    "url": "git@github.com:hihx/ix-ui.git"
   },
   "dependencies": {
     "highlight.js": "^10.6.0",

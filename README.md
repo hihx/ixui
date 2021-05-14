@@ -2,7 +2,7 @@
 
 > 基于vue.js轻量级ui组件库，组件命名/参数命名贴近element-ui，轻松上手
 >
-> 文档：https://xh33.gitee.io/ixui
+> 文档：https://hihx.github.io/ixui/
 
 ## 发布后的js / css静态资源体积
 ix-ui: index.js(160k) index.css(50k)
