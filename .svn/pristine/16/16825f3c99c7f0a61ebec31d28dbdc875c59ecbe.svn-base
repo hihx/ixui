@@ -1,2 +1,0 @@
-@theme:#5aa4ae;
-@theme-low: fade(@theme, 10%);
