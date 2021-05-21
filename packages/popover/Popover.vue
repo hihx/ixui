@@ -1,11 +1,13 @@
 <template>
+  <transition name="fade">
     <div class="ix-popover"
          :class="[className, 'ix-placement-'+placement]" v-show="thisVisible"
-         @mouseenter="setVisible(true)" @mouseleave="trigger == 'hover' ? setVisible(false) : null" :style="{padding:padding}">
+         @mouseenter="trigger == 'hover' ? setVisible(true) : null" @mouseleave="trigger == 'hover' ? setVisible(false) : null" :style="{padding:padding}">
       <slot></slot>
-      <i class="ix-tooltip__arrow"></i>
+      <i class="ix-tooltip__arrow" :style="{left: arrowLeft}"></i>
       <slot name="reference"></slot>
     </div>
+  </transition>
 </template>
 
 <script>

@@ -1,7 +1,7 @@
 <template>
   <div class="ix-loading">
     <transition name="fade">
-      <div class="mark" v-show="model" @click="showClose ? close() : null"></div>
+      <div class="mark" v-show="model && thisVisible" @click="showClose ? close() : null"></div>
     </transition>
     <transition :name="transition" @after-leave="handleAfterLeave">
       <div class="view" :class="transition" v-show="thisVisible">

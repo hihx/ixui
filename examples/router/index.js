@@ -176,6 +176,18 @@ export default new VueRouter({
           component: () => import('@/docs/tooltip.md'),
           meta: {title: 'Tooltip 文字提示'}
         },
+        {
+          path: '/layout',
+          name: 'layout',
+          component: () => import('@/docs/layout.md'),
+          meta: {title: 'Layout 布局'}
+        },
+        {
+          path: '/upload',
+          name: 'upload',
+          component: () => import('@/docs/upload.md'),
+          meta: {title: 'Upload 上传'}
+        },
       ]
     }
   ]

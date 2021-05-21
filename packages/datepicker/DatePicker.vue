@@ -17,7 +17,7 @@
            :placeholder="endPlaceholder" v-popover:pop
            @focus="onfocus" @blur="onblur"/>
     <a v-show="clearable && thisValue[0]" class="ix-icon-error" @click.stop="clear" title="清空"></a>
-    <ix-popover ref="pop" class-name="ix-datepicker_pop" :width="is_range ? '620px' : '300px'" :visible.sync="showPopup" padding="10px">
+    <ix-popover ref="pop" class-name="ix-datepicker_pop" :width="is_range ? '620px' : '300px'" :visible.sync="showPopup" padding="10px" :setTarget="$el">
       <div class="ix-datepicker_bar flex" v-if="show_time">
         <div class="flex f1">
           <ix-input v-model="inputValue[0]" size="small" class="f1" :placeholder="placeholder" :disabled="clickRange == 1"></ix-input>

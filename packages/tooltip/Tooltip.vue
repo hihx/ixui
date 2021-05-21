@@ -1,11 +1,13 @@
 <template>
+  <transition name="fade">
     <div class="ix-tooltip"
          :class="[className, 'ix-placement-'+placement]" v-show="thisVisible"
          @mouseenter="setVisible(true)" @mouseleave="setVisible(false)" :style="{padding:padding}">
       <slot></slot>
       <slot name="content">{{content}}</slot>
-      <i class="ix-tooltip__arrow"></i>
+      <i class="ix-tooltip__arrow" :style="{left: arrowLeft}"></i>
     </div>
+  </transition>
 </template>
 
 <script>

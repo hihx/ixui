@@ -1,6 +1,6 @@
 {
   "name": "ix-ui-vue",
-  "version": "1.1.5",
+  "version": "1.1.6",
   "description": "基于vue.js轻量级ui组件库",
   "author": "huangxian",
   "main": "lib/index.js",
@@ -28,7 +28,8 @@
     "test": "npm run unit && npm run e2e",
     "build:all": "node build/publish.js",
     "build:one": "node build/build-components.js",
-    "build": "node build/build.js"
+    "build": "node build/build.js",
+    "publish": "npm publish"
   },
   "repository": {
     "type": "git",

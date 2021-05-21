@@ -5,11 +5,11 @@
       <div ref="view" class="ix-scrollpanel__view" :style="{'height': height ? viewWH.h : 'calc(100% + '+bar_size+'px)', 'width': viewWH.w, 'margin-right': -bar_size+'px', 'margin-bottom': -bar_size+'px'}">
         <slot></slot>
       </div>
-      <div class="ix-scrollpanel__bar is-bottom" v-show="bar_visible">
-        <a ref="hor" class="ix-scrollpanel__t" @mousedown="mousedown($event, 'hor')"></a>
+      <div class="ix-scrollpanel__bar is-bottom" v-show="bar_visible && bar_status.hor !== 1" @click.self="clickBar($event, 'hor')">
+        <a ref="hor" class="ix-scrollpanel__t" @mousedown.stop="mousedown($event, 'hor')"></a>
       </div>
-      <div class="ix-scrollpanel__bar is-right" v-show="bar_visible">
-        <a ref="ver" class="ix-scrollpanel__t" @mousedown="mousedown($event, 'ver')"></a>
+      <div class="ix-scrollpanel__bar is-right" v-show="bar_visible && bar_status.ver !== 1" @click.self="clickBar($event, 'ver')">
+        <a ref="ver" class="ix-scrollpanel__t" @mousedown.stop="mousedown($event, 'ver')"></a>
       </div>
     </div>
 </template>
@@ -31,7 +31,8 @@
           scroll_view: Object,
           scroll_save: [0, 0],
           viewWH: {w:0, h:0},
-          saveScroll: 0
+          saveScroll: 0,
+          bar_status: {hor:0, ver:0} // 2个滚动条状态
         }
       },
       props:['width', 'height', 'scroll'],
@@ -69,10 +70,10 @@
             this.scroll_save[0] = this.scroll_view.scrollWidth
             this.scroll_save[1] = this.scroll_view.scrollHeight
             // console.log('calc y', this.scroll_view.clientHeight, this.scroll_view.scrollHeight)
-            let n = this.scroll_view.clientHeight / this.scroll_view.scrollHeight
-            this.$refs.ver.style.height = n == 1 ? '0px' : (n * this.scroll_view.clientHeight) + 'px'
-            n = this.scroll_view.clientWidth / this.scroll_view.scrollWidth
-            this.$refs.hor.style.width = n == 1 ? '0px' : (n * this.scroll_view.clientWidth) + 'px'
+            this.bar_status.ver = this.scroll_view.clientHeight / this.scroll_view.scrollHeight
+            this.$refs.ver.style.height = this.bar_status.ver == 1 ? '0px' : (this.bar_status.ver * this.scroll_view.clientHeight) + 'px'
+            this.bar_status.hor = this.scroll_view.clientWidth / this.scroll_view.scrollWidth
+            this.$refs.hor.style.width = this.bar_status.hor == 1 ? '0px' : (this.bar_status.hor * this.scroll_view.clientWidth) + 'px'
           })
         },
         // 滚动时更新滚动条滑块位置
@@ -112,6 +113,14 @@
         scrollTo (x, y) {
           this.scroll_view.scrollLeft = x || 0
           this.scroll_view.scrollTop = y || 0
+        },
+        // 点击Bar时滚动到目标位置
+        clickBar (event, dir) {
+          if (dir == 'hor') {
+            this.scroll_view.scrollLeft = event.offsetX / this.$el.offsetWidth * (this.$el.scrollWidth + parseFloat(this.$refs.hor.style.width))
+          } else {
+            this.scroll_view.scrollTop = event.offsetY / this.$el.offsetHeight * (this.$el.scrollHeight + parseFloat(this.$refs.ver.style.height))
+          }
         }
       },
       updated() {

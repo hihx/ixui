@@ -31,8 +31,15 @@ import ixProgress from './progress/index.js';
 import ixSwitch from './switch/index.js';
 import ixSlider from './slider/index.js';
 import ixTooltip from './tooltip/index.js';
+import ixRow from './row/index.js';
+import ixCol from './col/index.js';
+import ixUpload from './upload/index.js';
+
 import less from './theme-default/src/index.less'
+
 const components = [
+  ixRow,
+  ixCol,
   ixButton,
   ixInput,
   ixSelect,
@@ -65,7 +72,8 @@ const components = [
   ixProgress,
   ixSwitch,
   ixSlider,
-  ixTooltip
+  ixTooltip,
+  ixUpload
 ]
 
 const install = function(Vue) {

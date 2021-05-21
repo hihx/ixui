@@ -6,7 +6,7 @@
         <i slot="suffix" class="ix-select__caret no_event"
            :class="[showPopup ? 'is-reverse' : '', loading ? 'ix-icon-loading' : 'ix-icon-arrow-down']"></i>
       </ix-input>
-      <ix-popover ref="pop" width="100%" :visible.sync="showPopup" padding="0">
+      <ix-popover ref="pop" width="100%" :visible.sync="showPopup" padding="1px">
         <ix-scrollpanel ref="sp">
           <slot></slot>
         </ix-scrollpanel>

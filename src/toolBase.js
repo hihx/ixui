@@ -15,13 +15,15 @@ export default {
     placement: {
       type: String,
       default: 'bottom'
-    }
+    },
+    setTarget: null
   },
   data () {
     return {
       thisVisible: this.visible,
       target: null,
-      scrollParent: null
+      scrollParent: null,
+      arrowLeft: null
     }
   },
   watch: {
@@ -31,6 +33,7 @@ export default {
   },
   beforeDestroy() {
     window.removeEventListener('mouseup', this.mouseup)
+    window.removeEventListener('resize', this.onscroll)
     if (this.scrollParent) this.scrollParent.removeEventListener('scroll', this.onscroll)
     this.scrollParent = null
     if (this.target) {
@@ -58,7 +61,7 @@ export default {
     },
     show (target) {
       document.body.appendChild(this.$el)
-      this.target = target
+      this.target = this.setTarget || target
       this.scrollParent = getScrollParent(target)
       this.setVisible(true)
       this.$nextTick(() => {
@@ -66,11 +69,13 @@ export default {
         this.updateXY()
       })
       window.addEventListener('mouseup', this.mouseup)
+      window.addEventListener('resize', this.onscroll)
       this.scrollParent.addEventListener('scroll', this.onscroll)
     },
     hide () {
       this.setVisible(false)
       window.removeEventListener('mouseup', this.mouseup)
+      window.removeEventListener('resize', this.onscroll)
       if (this.scrollParent) this.scrollParent.removeEventListener('scroll', this.onscroll)
     },
     updateXY () {
@@ -78,8 +83,11 @@ export default {
       this['placement_' + this.placement](xy)
     },
     placement_bottom (xy) {
-      this.$el.style.left = (xy.left + (this.target.offsetWidth / 2 - this.$el.offsetWidth / 2)) + 'px'
+      const isBig = this.$el.offsetWidth > this.target.offsetWidth
+      this.$el.style.left = isBig ? xy.left + 'px' : (xy.left + (this.target.offsetWidth / 2 - this.$el.offsetWidth / 2)) + 'px'
       this.$el.style.top = (xy.top + this.target.offsetHeight + 10) + 'px'
+      this.arrowLeft = isBig ? '36px' : null
+      console.log(this.arrowLeft)
     },
     placement_top (xy) {
       this.$el.style.left = (xy.left + (this.target.offsetWidth / 2 - this.$el.offsetWidth / 2)) + 'px'

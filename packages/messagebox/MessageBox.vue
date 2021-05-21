@@ -2,7 +2,7 @@
   <div class="ix-messagebox"
        :class="[className]">
     <transition name="fade">
-      <div class="mark" v-show="model" @click="showClose ? close() : null"></div>
+      <div class="mark" v-show="model && thisVisible" @click="showClose ? close() : null"></div>
     </transition>
     <transition :name="transition" @after-leave="handleAfterLeave">
       <div class="view" :style="width ? 'width:'+width : ''" :class="transition" v-show="thisVisible">
