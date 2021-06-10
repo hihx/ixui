@@ -13,7 +13,7 @@ element-ui: index.js(554k) index.css(227k)
 
 ix-ui: index.js(38k) index.css(9k)
 
-element-ui: index.js(554k) index.css(227k)
+element-ui: index.js(134k) index.css(32k)
 
 ## 源码目录
 packages
