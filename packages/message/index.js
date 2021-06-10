@@ -1,3 +1,4 @@
+import Vue from 'vue'
 import Main from './Message.vue'
 import {isVNode} from '#/util'
 

@@ -28,7 +28,7 @@ const webpackConfig = merge(baseWebpackConfig, {
     filename: 'index.js',
     publicPath: config.publish.assetsPublicPath,
     library: 'ixUI',
-    libraryTarget: 'window',
+    libraryTarget: 'umd',
     umdNamedDefine: true
   },
   externals: {
@@ -36,7 +36,7 @@ const webpackConfig = merge(baseWebpackConfig, {
       root: 'Vue',
       commonjs: 'vue',
       commonjs2: 'vue',
-      amd: 'vue'
+      umd: 'vue'
     }
   },
   plugins: [

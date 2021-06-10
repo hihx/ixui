@@ -53,8 +53,8 @@ npm install ix-ui-vue --save
 在 main.js 中写入以下内容：
 ```javascript
 import Vue from 'vue';
-import ixui from 'ix-ui';
-import 'ixui/lib/index.css';
+import ixui from 'ix-ui-vue';
+import 'ix-ui-vue/lib/index.css';
 import App from './App.vue';
 
 Vue.use(ixui);
@@ -90,7 +90,7 @@ npm install babel-plugin-component -D
 接下来，如果你只希望引入部分组件，比如 `Button` 和 `Select`，那么需要在 `main.js` 中写入以下内容：
 ```javascript
 import Vue from 'vue';
-import { Button, Select } from 'ix-ui';
+import { Button, Select } from 'ix-ui-vue';
 import App from './App.vue';
 
 Vue.component(Button.name, Button);

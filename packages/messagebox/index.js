@@ -1,3 +1,4 @@
+import Vue from 'vue'
 import MessageBox from '../messagebox/MessageBox.vue'
 import {isVNode} from '#/util'
 

@@ -1,3 +1,4 @@
+import Vue from 'vue'
 import Main from './Loading.vue'
 
 const LoadingConstructor = Vue.extend(Main);
