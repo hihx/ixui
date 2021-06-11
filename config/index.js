@@ -74,6 +74,6 @@ module.exports = {
     assetsPublicPath: '',
     productionGzip: true,
     productionGzipExtensions: ['js', 'css'],
-    productionSourceMap: true
+    productionSourceMap: false
   }
 }
