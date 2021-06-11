@@ -1,4 +1,5 @@
 'use strict'
+const path = require('path')
 const utils = require('./utils')
 const webpack = require('webpack')
 const config = require('../config')
@@ -7,8 +8,24 @@ const baseWebpackConfig = require('./webpack.base.conf')
 const ExtractTextPlugin = require('extract-text-webpack-plugin')
 const OptimizeCSSPlugin = require('optimize-css-assets-webpack-plugin')
 const UglifyJsPlugin = require('uglifyjs-webpack-plugin')
+const fs = require('fs')
 
-baseWebpackConfig.entry = {}
+function getFolders (dir) {
+  return fs.readdirSync(dir).filter(function (file) {
+    return fs.statSync(path.join(dir, file)).isDirectory()
+  })
+}
+
+//定义入口
+const folders = getFolders(path.join(__dirname, '../packages'))
+let entry =  {};
+for (let i = 0; i < folders.length; i++) {
+  let componentName = folders[i]
+
+  if (!entry[componentName] && componentName.indexOf('theme-') == -1) {
+    entry[componentName] = `./packages/${componentName}/index.js`
+  }
+}
 
 const webpackConfig = merge(baseWebpackConfig, {
   module: {
@@ -19,15 +36,14 @@ const webpackConfig = merge(baseWebpackConfig, {
     })
   },
   devtool: config.publish.productionSourceMap ? '#source-map' : false,
-  entry: {
-    js: './packages/index.js',
-  },
+  entry,
   output: {
     path: config.publish.distRoot + '/lib',
-    filename: 'index.js',
+    filename: "[name]/index.js",
     publicPath: config.publish.assetsPublicPath,
     library: 'ixUI',
     libraryTarget: 'umd',
+    libraryExport: 'default',
     umdNamedDefine: true
   },
   externals: {

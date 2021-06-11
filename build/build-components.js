@@ -2,48 +2,20 @@
 require('./check-versions')()
 
 process.env.NODE_ENV = 'publish'
+let isMin = process.argv[2]
 
-const ora = require('ora')
-const rm = require('rimraf')
-const fs = require('fs')
-const path = require('path')
-const chalk = require('chalk')
-const webpack = require('webpack')
-let webpackConfig = require('./webpack.publish.conf')
-let config = require('../config')
+let ora = require('ora')
+let chalk = require('chalk')
+let webpack = require('webpack')
+let webpackConfig = require('./webpack.com.conf')
 
-function getFolders (dir) {
-  return fs.readdirSync(dir).filter(function (file) {
-    return fs.statSync(path.join(dir, file)).isDirectory()
-  })
-}
-
-const spinner = ora('building for production...')
+let spinner = ora('building for publish...')
 spinner.start()
 
-rm(path.join(config.publish.distRoot, 'lib'), err => {
-  if (err) throw err
-})
-
-const folders = getFolders(path.join(__dirname, '../packages'))
-const originEntry = Object.assign(webpackConfig.entry)
-const originOutput = Object.assign(webpackConfig.output)
-
-webpackConfig.entry = {}
-for (let i = 0; i < folders.length; i++) {
-  let componentName = folders[i]
-
-  if (!webpackConfig.entry[componentName] && componentName.indexOf('theme-') == -1) {
-    webpackConfig.entry[componentName] = `./packages/${componentName}/index.js`
-  }
-}
-
-webpackConfig.output.path = path.join(config.publish.distRoot, 'lib')
-webpackConfig.output.filename = '[name].js'
-
-webpack(webpackConfig, (err, stats) => {
+webpack(webpackConfig, function (err, stats) {
   spinner.stop()
   if (err) throw err
+
   process.stdout.write(stats.toString({
     colors: true,
     modules: false,
@@ -53,11 +25,9 @@ webpack(webpackConfig, (err, stats) => {
   }) + '\n\n')
 
   if (stats.hasErrors()) {
-    console.log(chalk.red('Build failed with errors.\n'))
+    console.log(chalk.red('  Build failed with errors.\n'))
     process.exit(1)
   }
 
-  console.log(chalk.greenBright(`$Build components successfully!\n`))
-  webpackConfig.entry = originEntry
-  webpackConfig.output = originOutput
+  console.log(chalk.cyan('  Build ' + (isMin ? 'min' : '') + ' complete.\n'))
 })
