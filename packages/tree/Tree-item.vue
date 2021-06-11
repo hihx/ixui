@@ -19,13 +19,11 @@
 </template>
 
 <script>
-  import IxCheckbox from "../checkbox";
   import IxCollapseTransition from '#/collapse-transition'
   export default {
     name: "tree-item",
     inject: ['rootTree'],
     components: {
-      IxCheckbox,
       IxCollapseTransition,
       NodeContent: {
         props: {

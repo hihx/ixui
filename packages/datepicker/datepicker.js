@@ -7,14 +7,10 @@ import p_monthrange from './picker/monthrange'
 import datePane from "./module/datePane";
 import ymPane from "./module/YMpane";
 import dateUtil from "#/dateUtil";
-import IxTimepicker from "../timepicker";
-import IxPopover from "../popover";
-import IxInput from "../input";
-import IxButton from "../button";
 
 const datepicker = {
   name: 'ix-datepicker',
-  components: {IxTimepicker, datePane, ymPane, IxPopover, IxInput, IxButton},
+  components: {datePane, ymPane},
   model: {
     prop: 'value',
     event: 'change'

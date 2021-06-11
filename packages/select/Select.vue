@@ -16,12 +16,8 @@
 
 <script>
   import {checkSlotChange} from "#/util";
-  import IxInput from '../input'
-  import IxPopover from '../popover'
-  import IxScrollpanel from '../scrollpanel'
     export default {
       name: "ix-select",
-      components: {IxInput, IxPopover, IxScrollpanel},
       model: {
         prop: 'value',
         event: 'change'

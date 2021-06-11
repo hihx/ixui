@@ -21,10 +21,8 @@
   </ul>
 </template>
 <script>
-import ixProgress from '../progress'
   export default {
     name: "ix-upload-list",
-    components: {ixProgress},
     computed: {
       is_pic () {
         return this.$parent.listType == 'picture-card'

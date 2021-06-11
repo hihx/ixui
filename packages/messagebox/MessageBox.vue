@@ -28,11 +28,8 @@
 
 <script>
   import Util from '#/util'
-  import IxInput from '../input'
-  import IxButton from '../button'
   export default {
     name: "ix-messagebox",
-    components: {IxInput, IxButton},
     props: {
       className: String,
       width: { default: '420px' },

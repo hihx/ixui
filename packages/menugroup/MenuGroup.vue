@@ -10,10 +10,8 @@
 </template>
 
 <script>
-  import IxMenuItem from '../menuitem'
     export default {
       name: "ix-menu-group",
-      components: {IxMenuItem},
       props: {
         icon: '',
         title: '',

@@ -25,12 +25,8 @@
 </template>
 
 <script>
-import ixSelect from '../select'
-import ixOption from '../option'
-import ixInput from '../input'
     export default {
       name: "ix-pagination",
-      components: {ixSelect, ixOption, ixInput},
       props: {
         'pageSize': {
           type: Number,

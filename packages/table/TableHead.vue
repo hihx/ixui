@@ -30,13 +30,11 @@
 </template>
 
 <script>
-    import IxCheckbox from "../checkbox";
     import TableCell from "./table-cell";
-    import IxPopover from "../popover";
 
     export default {
       name: "ix-table-head",
-      components: {IxCheckbox, TableCell, IxPopover},
+      components: {TableCell},
       props: {
         tdWidth: null,
         thead: null

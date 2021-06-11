@@ -28,14 +28,12 @@
 
 <script>
   import {checkMouseUp} from "#/util";
-  import IxInput from '../input'
 export default {
   name: 'ix-timepicker',
   model: {
     prop: 'value',
     event: 'change'
   },
-  components: {IxInput},
   props: {
     value: {
       type: [String],

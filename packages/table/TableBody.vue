@@ -26,11 +26,10 @@
 
 <script>
   import TableCell from './table-cell'
-  import IxCheckbox from "../checkbox";
   import BodyTR from "./class/BodyTR";
     export default {
       name: "ix-table-body",
-      components: {TableCell, IxCheckbox},
+      components: {TableCell},
       props: {
         tdWidth: null,
         tbody: null,

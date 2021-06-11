@@ -13,11 +13,10 @@
 </template>
 
 <script>
-  import IxMenuItem from '../menuitem'
   import IxCollapseTransition from '#/collapse-transition'
     export default {
       name: "ix-menusub",
-      components: {IxMenuItem, IxCollapseTransition},
+      components: {IxCollapseTransition},
       props: {
         icon: '',
         title: '',

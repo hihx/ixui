@@ -13,11 +13,8 @@
 </template>
 
 <script>
-  import IxInput from '../input'
-  import IxButton from '../button'
     export default {
       name: "ix-inputnumber",
-      components: {IxButton, IxInput},
       model: {
         prop: 'value',
         event: 'change'

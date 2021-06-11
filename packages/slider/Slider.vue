@@ -18,14 +18,13 @@
 
 <script>
 import markCell from './mark-cell'
-import ixTooltip from '../tooltip'
     export default {
       name: "ix-slider",
       model: {
         prop: 'value',
         event: 'change'
       },
-      components: {markCell, ixTooltip},
+      components: {markCell},
       props: {
         value: {
           type: [Number, Array],
