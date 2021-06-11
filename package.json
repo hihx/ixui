@@ -1,6 +1,6 @@
 {
   "name": "ix-ui-vue",
-  "version": "1.1.10",
+  "version": "1.1.11",
   "description": "基于vue.js轻量级ui组件库",
   "author": "huangxian",
   "main": "lib/index.js",
@@ -31,7 +31,7 @@
     "build:one": "node build/build-components.js",
     "build": "node build/build.js",
     "publish": "npm publish",
-    "git": "git add . && git commit -m auto && git push origin main && git push gitee main"
+    "git": "git add . && git commit -m auto && git push origin main && git push gitee main && npm publish"
   },
   "repository": {
     "type": "git",
