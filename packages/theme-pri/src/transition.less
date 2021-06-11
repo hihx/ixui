@@ -1,0 +1,23 @@
+// 动画效果：渐隐
+.fade-enter-active, .fade-leave-active {
+  transition: opacity .5s;
+}
+.fade-enter, .fade-leave-to{
+  opacity: 0 !important;
+}
+// 动画效果：上下+渐隐
+.slide-fade-enter-active, .slide-fade-leave-active {
+  transition: opacity .3s, transform .5s;
+}
+.slide-fade-enter, .slide-fade-leave-to{
+  opacity: 0;
+}
+.slide-fade-enter, .slide-fade-leave-to {
+  transform: translateY(-50%);
+}
+.slide-fade-enter-to, .slide-fade-leave {
+  transform: translateY(0);
+}
+.collapse-transition {
+  transition: 0.3s height ease-in-out, 0.3s padding-top ease-in-out, 0.3s padding-bottom ease-in-out;
+}

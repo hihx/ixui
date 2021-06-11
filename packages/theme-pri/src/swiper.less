@@ -1,0 +1,75 @@
+@import "./var.less";
+.ix-swiper{
+  position: relative;
+  width: 100%;
+  .ix-swiper-content{
+    overflow: hidden;
+    width: 100%;
+    font-size: 0;
+    white-space: nowrap;
+    >*{position: relative;display: inline-block;}
+  }
+  .ix-swiper-points{
+    position: absolute;
+    bottom: 5px;
+    width: 100%;
+    text-align: center;
+    z-index: 2;
+    >i{
+      display: inline-block;
+      width: 10px;
+      height: 10px;
+      background: #888;
+      opacity:0.5;
+      font-size: 0;
+      margin: 0 5px;
+      border-radius: 50%;
+    }
+    >i.active{
+      opacity: 1;
+    }
+  }
+  >a{
+    position: absolute;
+    width: 36px;
+    height: 36px;
+    left: 10px;
+    margin-top: -18px;
+    top:50%;
+    z-index: 1;
+    background: rgba(0,0,0, 0.1);
+    color: #fff;
+    border-radius: 50%;
+    cursor: pointer;
+    text-align: center;
+    line-height: 36px;
+    font-size: 30px;
+    &:hover{
+      background: rgba(0,0,0, 0.2);
+    }
+  }
+  >a.ix-swiper-btnright{
+    left: auto;
+    right: 10px;
+  }
+  .opacity-enter, .opacity-leave-to {
+    opacity: 0;
+  }
+  .opacity-enter-to{
+    opacity: 1;
+  }
+  .slide-enter {
+    transform: translateX(+100%);
+  }
+  .slide-leave-to {
+    transform: translateX(-100%);
+  }
+  .slide-enter-to {
+    transform: translateX(0);
+  }
+  .slide-leave {
+    transform: translateX(0);
+  }
+}
+
+

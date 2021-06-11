@@ -1,0 +1,131 @@
+@import "./var.less";
+.ix-messagebox, .ix-dialog, .ix-loading{
+  position: fixed;
+  left:0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  text-align: center;
+  color:@fontColor;
+  pointer-events: none;
+  font-size: @fontSize;
+  >.mark{
+    position: absolute;
+    left:0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background: #000;
+    opacity: .1;
+    pointer-events: auto;
+  }
+  >.view{
+    min-width: 300px;
+    border-radius: 2px;
+    background: #fff;
+    position: relative;
+    box-shadow: @box-shadow;
+    box-sizing: border-box;
+    display: inline-block;
+    text-align: left;
+    margin-top: 15vh;
+    pointer-events: auto;
+    overflow-y: auto;
+    max-height: 100%;
+    >.title{
+      padding: 10px;
+      position: relative;
+      >label{
+        width: 100%;
+        font-size: @fontSize;
+      }
+      >i{
+        position: absolute;
+        top: 0;
+        right: 0;
+        font-size: 20px;
+        cursor: pointer;
+        padding: 10px;
+        &:hover{
+          color: fade(@theme, 120%);
+        }
+      }
+    }
+    >.content{
+      padding: 30px;
+      >.infoTip{margin: 0;}
+      .conIco{
+        font-size: 30px;
+      }
+    }
+    .btns-footer{
+      padding: 10px 10px;
+      white-space: nowrap;
+      >.ix-button{
+        width: 50%;
+        padding: 10px 10px;
+      }
+    }
+    .dialog-footer{
+      padding: 10px 10px;
+      text-align: right;
+      >div{
+        margin: 10px 0;
+      }
+      .ix-button{
+      }
+    }
+  }
+}
+.ix-dialog{
+  z-index: 100;
+  >.mark{
+    opacity: .2;
+  }
+  >.view{
+    >.title{
+      border-bottom: 1px solid #eee;
+      min-height: 20px;
+    }
+  }
+}
+.ix-messagebox{
+  z-index: 101;
+  >.view{
+    >.content{
+      text-align: center;
+      padding: 10px;
+    }
+  }
+}
+.ix-loading{
+  z-index: 102;
+  >.view {
+    width: auto;
+    min-width: auto;
+    >.title {
+      padding: 0;
+      border: 0;
+      >*{
+        vertical-align: middle;
+      }
+      > b {
+        font-size: @fontSize;
+        margin-right: 10px;
+      }
+      > i {
+        top: 9px;
+        right: 0;
+      }
+    }
+    >.content{
+      padding: 17px 27px;
+      .ix-icon-loading{
+        font-size: 30px;
+        color: @theme;
+      }
+    }
+  }
+}
+
+

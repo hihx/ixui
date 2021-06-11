@@ -1,0 +1,42 @@
+@import "./var.less";
+.ix-scrollpanel{
+  position: relative;
+  overflow: hidden;
+  border-radius: 4px;
+  .ix-scrollpanel__view{
+    overflow: scroll;
+    box-sizing: border-box;
+  }
+  .ix-scrollpanel__bar{
+    position: absolute;
+    border-radius: 10px;
+    background: #F7F8F9;
+    .ix-scrollpanel__t{
+      position: relative;
+      display: block;
+      border-radius: 10px;
+      background: fade(@theme, 30);
+      &:hover{
+        background: @theme;
+      }
+    }
+  }
+  .ix-scrollpanel__bar.is-bottom{
+    right: 0;
+    bottom: 0;
+    width: 100%;
+    height: 6px;
+    .ix-scrollpanel__t{
+      height: 6px;
+    }
+  }
+  .ix-scrollpanel__bar.is-right{
+    right: 0;
+    top: 0;
+    height: 100%;
+    width: 6px;
+    .ix-scrollpanel__t{
+      width: 6px;
+    }
+  }
+}

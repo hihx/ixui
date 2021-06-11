@@ -1,0 +1,90 @@
+@import "./var.less";
+.ix-progress{
+  position: relative;
+  display: inline-flex;
+  .ix-progress-bar{
+    border-radius: 50px;
+    background: @theme-low;
+    width: 100%;
+    position: relative;
+    .ix-progress-bar_inner{
+      background: @theme;
+      border-radius: 50px;
+      position: absolute;
+      left: 0;
+      top: 0;
+      height: 100%;
+      transition: width .6s ease;
+    }
+    .ix-progress-bar_txt{
+      line-height: 1;
+      display: inline-block;
+      vertical-align: middle;
+      width: 100%;
+      text-align: right;
+      box-sizing: border-box;
+      color: #fff;
+      padding-right: 8px;
+    }
+  }
+  >.ix-progress-bar_txt, >i{
+    width: 40px;
+    padding-left: 8px;
+  }
+  &.ix-text-inside>i{
+    display: none;
+  }
+  &.ix-progress--line{
+    align-items: center;
+    width: 100%;
+  }
+  &.ix-progress--circle, &.ix-progress--dashboard{
+    .ix-progress-bar_txt, >i{
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      width: auto;
+      padding: 0;
+      transform: translate(-50%, -50%);
+    }
+    svg {
+      transform: rotate(-90deg);
+    }
+    .ix-progress-circle_bg{
+      stroke: @theme-low;
+    }
+    .ix-progress-circle_progress{
+      stroke: @theme;
+      transition: stroke-dasharray 0.6s ease 0s, stroke 0.6s ease
+    }
+  }
+  &.ix-progress--dashboard{
+    svg {
+      transform: rotate(-225deg);
+    }
+  }
+  &.ix-success{
+    .ix-progress-bar_inner{
+      background: @color-success;
+    }
+    .ix-progress-circle_progress{
+      stroke: @color-success;
+    }
+  }
+  &.ix-warning{
+    .ix-progress-bar_inner{
+      background: @color-warning;
+    }
+    .ix-progress-circle_progress{
+      stroke: @color-warning;
+    }
+  }
+  &.ix-exception{
+    .ix-progress-bar_inner{
+      background: @color-danger;
+    }
+    .ix-progress-circle_progress{
+      stroke: @color-danger;
+    }
+  }
+}

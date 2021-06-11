@@ -36,7 +36,7 @@ const webpackConfig = merge(baseWebpackConfig, {
       root: 'Vue',
       commonjs: 'vue',
       commonjs2: 'vue',
-      umd: 'vue'
+      amd: 'vue'
     }
   },
   plugins: [
@@ -47,7 +47,9 @@ const webpackConfig = merge(baseWebpackConfig, {
     new UglifyJsPlugin({
       uglifyOptions: {
         compress: {
-          warnings: false
+          warnings: false,
+          drop_console: true,
+          pure_funcs: ['console.log']
         }
       },
       sourceMap: config.publish.productionSourceMap,
@@ -55,7 +57,11 @@ const webpackConfig = merge(baseWebpackConfig, {
     }),
     // extract css into its own file
     new ExtractTextPlugin({
-      filename: utils.assetsPath('index.css'),
+      filename: utils.assetsPath('/theme-default/index.css'),
+      allChunks: true,
+    }),
+    new ExtractTextPlugin({
+      filename: utils.assetsPath('/theme-pri/index.css'),
       allChunks: true,
     }),
     // Compress extracted CSS. We are using this plugin so that possible
