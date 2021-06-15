@@ -87,7 +87,7 @@ export default {
       this.$el.style.left = isBig ? xy.left + 'px' : (xy.left + (this.target.offsetWidth / 2 - this.$el.offsetWidth / 2)) + 'px'
       this.$el.style.top = (xy.top + this.target.offsetHeight + 10) + 'px'
       this.arrowLeft = isBig ? '36px' : null
-      console.log(this.arrowLeft)
+      // console.log(this.arrowLeft)
     },
     placement_top (xy) {
       this.$el.style.left = (xy.left + (this.target.offsetWidth / 2 - this.$el.offsetWidth / 2)) + 'px'
