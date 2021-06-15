@@ -81,7 +81,7 @@ npm install babel-plugin-component -D
       "component",
       {
         "libraryName": "ix-ui-vue",
-        "styleLibraryName": "theme-default"
+        "style":false
       }
     ]
   ]
